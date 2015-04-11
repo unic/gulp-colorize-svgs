@@ -8,7 +8,7 @@ First, install `gulp-colorize-svgs` as a development dependency:
 npm install --save-dev gulp-colorize-svgs@git+https://git@github.com/unic/gulp-colorize-svgs.git
 ```
 
-Then, add it to your `gulpfile.js` (probably together with [gulp-rename](https://www.npmjs.com/package/gulp-rename)):
+Then, add it to your `gulpfile.js`:
 
 ```javascript
 var colorize = require('gulp-colorize-svgs');
