@@ -1,5 +1,10 @@
 # gulp-colorize-svgs
 
+Replaces the ```fill``` attribute value of an SVG with one or several predefined colors and adds the new files to the stream. The original file is removed from the stream.
+
+Word of caution: If an SVG does not have a ```fill``` attribute, the default ```option.replaceColor``` function won't find anything to replace. In this case you should probably add [cheerio](http://npmjs.com/package/cheerio) to the mix.
+
+
 ## Usage
 
 First, install `gulp-colorize-svgs` as a development dependency:
@@ -47,9 +52,9 @@ Colors to use. Key corresponds to icon name, "default" property is used as a fal
 ### options.replaceColor
 Type: `Function`
 
-SVG transformation function. Replacing ```attribute``` by default.
+SVG transformation function. Replacing every occurrence of a ```fill``` attribute by default.
 
 ### options.replacePath
 Type: `Function`
 
-Transformation function for icon file name. Adding ```--[colorKey]``` by default.
+Transformation function for the new icon's file name. Adding ```--[colorKey]``` by default.
