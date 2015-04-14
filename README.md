@@ -2,7 +2,11 @@
 
 Replaces the ```fill``` attribute value of an SVG with one or several predefined colors and adds the new files to the stream. The original file is removed from the stream.
 
-Word of caution: If an SVG does not have a ```fill``` attribute, the default ```option.replaceColor``` function won't find anything to replace. In this case you should probably add [cheerio](http://npmjs.com/package/cheerio) to the mix.
+If no colors were specified, the original files are passed through.
+
+**Word of caution**: If an SVG does not have a ```fill``` attribute (which seems to be the case for black icons exported from Illustrator), the default ```option.replaceColor``` function won't find anything to replace and should be adapted accordingly (e.g. ```return content.replace(/<path/g, '<path fill="#' + hex + '"');```).
+
+For complex SVGs you should probably add [cheerio](http://npmjs.com/package/cheerio) to the mix.
 
 
 ## Usage
@@ -22,12 +26,14 @@ gulp.task('html', function(){
   gulp.src(['app/icons/*.svg'])
     .pipe(colorize({
       colors: {
-        "default": {
-          "blue": "0000ff",
-          "red": "ff0000"
+        // All files
+        default: {
+          blue: '0000ff',
+          red: 'ff0000'
         },
-        "icon2": {
-          "green": "00ff00"
+        // Specific files
+        icon2: {
+          green: '00ff00'
         }
       },
       replaceColor: function(content, hex) {
@@ -47,7 +53,7 @@ gulp.task('html', function(){
 ### options.colors
 Type: `Object`
 
-Colors to use. Key corresponds to icon name, "default" property is used as a fallback for unspecified icons.
+Colors to use. Key corresponds to file name, "default" property is used as a fallback for unspecified files.
 
 ### options.replaceColor
 Type: `Function`
@@ -57,4 +63,4 @@ SVG transformation function. Replacing every occurrence of a ```fill``` attribut
 ### options.replacePath
 Type: `Function`
 
-Transformation function for the new icon's file name. Adding ```--[colorKey]``` by default.
+Transformation function for the new file's name. Adding ```--[colorKey]``` by default.

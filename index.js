@@ -11,16 +11,7 @@ module.exports = function(options) {
 		});
 
 	options = _.merge({
-		colors: {
-			// All icons
-			default: {
-				// red: "cc3300"
-			}
-			// // Specific icons
-			// logo: {
-			// 	red: "cc3300"
-			// }
-		},
+		colors: {},
 		replaceColor: function(content, hex) {
 			return content.replace(/fill="#(.*?)"/g, 'fill="#' + hex + '"');
 		},
@@ -32,7 +23,7 @@ module.exports = function(options) {
 	stream._transform = function(file, unused, cb) {
 		var contents = file.contents.toString(),
 			fileName = path.basename(file.path).replace(path.extname(file.path), ''),
-			colors = options.colors[fileName] || options.colors["default"],
+			colors = options.colors[fileName] || options.colors['default'],
 			coloredContents,
 			coloredFile;
 
