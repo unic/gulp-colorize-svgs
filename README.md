@@ -14,7 +14,7 @@ For complex SVGs you should probably add [cheerio](http://npmjs.com/package/chee
 First, install `gulp-colorize-svgs` as a development dependency:
 
 ```shell
-npm install --save-dev gulp-colorize-svgs@git+https://git@github.com/unic/gulp-colorize-svgs.git
+npm install --save-dev gulp-colorize-svgs
 ```
 
 Then, add it to your `gulpfile.js`:
