@@ -23,7 +23,7 @@ Then, add it to your `gulpfile.js`:
 var colorize = require('gulp-colorize-svgs');
 
 gulp.task('colorize', function(){
-  gulp.src(['app/icons/*.svg'])
+  return gulp.src(['app/icons/*.svg'])
     .pipe(colorize({
       colors: {
         // All files
